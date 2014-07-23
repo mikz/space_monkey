@@ -12,7 +12,7 @@ describe SpaceMonkey::Client do
   end
 
   it 'has an account client' do
-    expect(subject.account).to be_an(SpaceMonkey::Account)
+    expect(subject.account).to be_an(SpaceMonkey::AccountClient)
     expect(subject.account.connection).to be(subject.connection)
   end
 

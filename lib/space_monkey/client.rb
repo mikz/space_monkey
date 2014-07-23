@@ -12,8 +12,8 @@ module SpaceMonkey
 
     def initialize(**options)
       @connection = SpaceMonkey.connection(options)
-      @account = SpaceMonkey::Account.new(@connection)
-      @inode = SpaceMonkey::Inode.new(@connection)
+      @account = SpaceMonkey::AccountClient.new(@connection)
+      @inode = SpaceMonkey::InodeClient.new(@connection)
     end
 
     def status

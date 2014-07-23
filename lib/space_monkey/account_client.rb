@@ -1,5 +1,5 @@
 module SpaceMonkey
-  class Account
+  class AccountClient
     attr_accessor :connection
 
     LoginError = Class.new(StandardError)
@@ -16,7 +16,7 @@ module SpaceMonkey
       @connection.post('https://accounts.spacemonkey.com/login', email: email, password: password)
       @logged_in = true
     rescue Faraday::ClientError
-      raise SpaceMonkey::Account::LoginError, $!
+      raise SpaceMonkey::AccountClient::LoginError, $!
     end
 
     def info

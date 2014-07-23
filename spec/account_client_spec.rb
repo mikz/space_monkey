@@ -1,8 +1,8 @@
 require 'json'
 
-describe SpaceMonkey::Account do
+describe SpaceMonkey::AccountClient do
   let(:connection) { SpaceMonkey.connection }
-  subject(:account) { SpaceMonkey::Account.new(connection) }
+  subject(:account) { SpaceMonkey::AccountClient.new(connection) }
 
   it 'logins' do
     login = stub_request(:post, 'https://accounts.spacemonkey.com/login').with(body: {email: 'username', password: 'password'}).
@@ -13,7 +13,7 @@ describe SpaceMonkey::Account do
 
   it 'raises exception when login is not successful' do
     stub_request(:post, 'https://accounts.spacemonkey.com/login').to_return(status: 401)
-    expect { subject.login('e', 'p') }.to raise_error(SpaceMonkey::Account::LoginError)
+    expect { subject.login('e', 'p') }.to raise_error(SpaceMonkey::AccountClient::LoginError)
   end
 
   it 'gets account info' do

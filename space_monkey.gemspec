@@ -27,4 +27,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'faraday-cookie_jar'
   spec.add_dependency 'faraday_middleware'
   spec.add_dependency 'thor'
+  spec.add_dependency 'hashie'
 end
