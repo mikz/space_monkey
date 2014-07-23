@@ -3,6 +3,7 @@ require 'space_monkey/version'
 module SpaceMonkey
   autoload :Client, 'space_monkey/client'
   autoload :Account, 'space_monkey/account'
+  autoload :Inode, 'space_monkey/inode'
   autoload :Connection, 'space_monkey/connection'
   autoload :CLI, 'space_monkey/cli'
 

@@ -17,3 +17,13 @@ describe SpaceMonkey::Connection do
     expect(get_cookie).to have_been_made
   end
 end
+
+describe SpaceMonkey::Connection::Options do
+  it 'has default url' do
+    expect(subject.url) == 'https://api.spacemonkey.com/v1/'
+  end
+
+  it 'has each' do
+    expect(subject.each.to_a).to eq([[:url, 'https://api.spacemonkey.com/v1/']])
+  end
+end

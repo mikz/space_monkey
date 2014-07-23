@@ -19,6 +19,7 @@ module SpaceMonkey
       @connection = Faraday::Connection.new(@options) do |connection|
         connection.request :url_encoded
         connection.response :json, content_type: 'application/json'
+        connection.response :raise_error
 
         connection.use :cookie_jar
 
@@ -29,6 +30,15 @@ module SpaceMonkey
     end
 
     class Options < OpenStruct
+      extend Forwardable
+      def_delegator :@table, :each
+
+      DEFAULTS = { url: 'https://api.spacemonkey.com/v1/'}
+
+      def initialize(hash = {})
+        super(DEFAULTS.merge(hash))
+      end
+
       def ==(other)
         super or @table == other
       end

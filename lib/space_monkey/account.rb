@@ -13,9 +13,10 @@ module SpaceMonkey
     end
 
     def login(email, password)
-      response = @connection.post('https://accounts.spacemonkey.com/login', email: email, password: password)
-      raise LoginError, response.status unless response.success?
+      @connection.post('https://accounts.spacemonkey.com/login', email: email, password: password)
       @logged_in = true
+    rescue Faraday::ClientError
+      raise SpaceMonkey::Account::LoginError, $!
     end
 
     def info

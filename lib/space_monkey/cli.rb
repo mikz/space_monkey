@@ -9,6 +9,7 @@ module SpaceMonkey
     desc 'console', 'starts ruby console with client loaded'
     def console
       IRB.setup(nil)
+      IRB.singleton_class.send(:remove_method, :setup) # to prevent redefinition warnings
       def IRB.setup(ap_file)
         # redefine it so we reset :SCRIPT config
         conf.delete(:SCRIPT)
