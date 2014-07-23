@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'space_monkey'
+require 'space_monkey/cli'
+
+SpaceMonkey::CLI.start
