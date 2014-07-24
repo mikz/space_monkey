@@ -1,7 +1,6 @@
 require 'ostruct'
 require 'forwardable'
 
-
 require 'faraday'
 require 'faraday-cookie_jar'
 require 'faraday_middleware'
@@ -14,6 +13,7 @@ module SpaceMonkey
 
     attr_accessor :options, :connection
 
+    # @param options [Options]
     def initialize(**options)
       @options = SpaceMonkey::Connection::Options.new(options)
       @connection = Faraday::Connection.new(@options) do |connection|

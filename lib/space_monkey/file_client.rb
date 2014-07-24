@@ -1,26 +1,34 @@
 module SpaceMonkey
-  class FileClient
+  class FileClient < BaseClient
     NonExistingFile = Class.new(StandardError)
 
-    def initialize(connection)
-      @connection = connection
-    end
-
+    # @return [SpaceMonkey::File] a new file
     def new(**options, &block)
       SpaceMonkey::File.new(options, &block)
     end
 
+    # @param options [ApiParams]
+    # @return [String] binary blob
+    # @raise [NonExistingFile] when file does not exist
     def download(file, **options)
       raise NonExistingFile, "File is not valid" unless file.exists?
       response = @connection.get("file/#{file.content_id}:/#{URI.escape(file.name)}", params(options))
       response.body
     end
 
+    # @param options [ApiParams]
+    # @return [String] binary blob
+    # @raise [NonExistingFile] when file does not exist
     def thumbnail(file, **options)
       raise NonExistingFile, "File is not valid" unless file.exists?
       response = @connection.get("thumbnail/#{file.content_id}:/#{URI.escape(file.name)}", params(options))
       response.body
     end
+
+    # @param file [SpaceMonkey::File] a file with name
+    # @param inode [SpaceMonkey::Inode,#content_id] an inode with content_id
+    # @param io [#size] any IO which has #size
+    # @return [SpaceMonkey::File] same file as passed merged with results of upload
 
     def upload(file, inode, io)
       response = @connection.put do |req|
@@ -32,6 +40,9 @@ module SpaceMonkey
 
       file.merge!(response.body)
     end
+
+    # @param file [SpaceMonkey::File] a file with name
+    # @param inode [SpaceMonkey::Inode,#content_id] an inode with content_id
 
     def delete(file, inode = parent)
       response = @connection.delete("inode/#{inode.content_id}:/#{URI.escape(file.name)}", content_id: file.content_id)

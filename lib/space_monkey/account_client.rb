@@ -1,17 +1,13 @@
 module SpaceMonkey
-  class AccountClient
-    attr_accessor :connection
-
+  class AccountClient < BaseClient
     LoginError = Class.new(StandardError)
-
-    def initialize(connection)
-      @connection = connection
-    end
 
     def logged_in?
       @logged_in
     end
 
+    # @return [true]
+    # @raise [SpaceMonkey::AccountClient::LoginError] when login fails
     def login(email, password)
       @connection.post('https://accounts.spacemonkey.com/login', email: email, password: password)
       @logged_in = true

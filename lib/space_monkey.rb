@@ -17,11 +17,14 @@ module SpaceMonkey
   autoload :ShareClient, 'space_monkey/share_client'
   autoload :Share, 'space_monkey/share'
 
+  # @return [Connection]
   def self.default_connection
     # TODO: add a mutex
     @@default_connection ||= SpaceMonkey::Connection.new
   end
 
+  # @param [Connection::Options]
+  # @return [Connection]
   def self.connection(options = {})
     options.empty? ? default_connection : SpaceMonkey::Connection.new(options)
   end

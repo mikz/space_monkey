@@ -4,12 +4,21 @@ module SpaceMonkey
   class Client
     extend Forwardable
 
-    attr_accessor :connection
+    # @return [SpaceMonkey::Connection]
+    attr_reader :connection
 
-    attr_accessor :account, :inode, :file
+    # @return [SpaceMonkey::AccountClient]
+    attr_reader :account
+
+    # @return [SpaceMonkey::InodeClient]
+    attr_reader :inode
+
+    # @return [SpaceMonkey::FileClient]
+    attr_reader :file
 
     def_delegator :@account, :login
 
+    # @param options [SpaceMonkey::Connection::Options]
     def initialize(**options)
       @connection = SpaceMonkey.connection(options)
 

@@ -1,15 +1,16 @@
 module SpaceMonkey
-  class InodeClient
+  class InodeClient < BaseClient
     ROOT = 'home'
 
-    def initialize(connection)
-      @connection = connection
-    end
-
+    # @param options [ApiParams]
+    # @return [Inode]
     def home(**options)
       inode(ROOT, **options)
     end
 
+    # @param options [ApiParams]
+    # @param path [String]
+    # @return [Inode]
     def path(path, **options)
       inode(::File.join(ROOT, URI.escape(path)), **options)
     end
