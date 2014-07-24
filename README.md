@@ -49,6 +49,18 @@ io = File.open('to_upload.jpg')
 uploaded = client.file.upload(file, inode, io)
 ```
 
+
+## What is supported
+
+- [x] Downloads
+- [x] Uploads
+- [x] Thumbnails
+- [x] Sharing
+- [ ] Moving
+- [ ] Deleting
+- [ ] Bulk Actions
+
+
 ## Contributing
 
 1. Fork it ( https://github.com/mikz/space_monkey/fork )
