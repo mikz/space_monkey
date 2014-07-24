@@ -60,6 +60,11 @@ uploaded = client.file.upload(file, inode, io)
 - [ ] Deleting
 - [ ] Bulk Actions
 
+## TODO
+
+1. figure out how to stream files
+   httpclient allows it, but faraday does not
+2. create fake server for testing
 
 ## Contributing
 
