@@ -11,4 +11,12 @@ describe SpaceMonkey::File do
     puts file.inspect
     expect(file.content_id).to eq(content_id)
   end
+
+  context 'when it has content_id and name' do
+    subject(:file) { described_class.new(content_id: 'id', name: 'name') }
+
+    it 'exists' do
+      expect(file).to exist
+    end
+  end
 end

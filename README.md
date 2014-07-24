@@ -20,7 +20,34 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Downloading a file
+
+```ruby
+client = SpaceMonkey::Client.new
+client.login('email@example.com', 'password')
+
+photos = client.inode.path('Photos')
+
+first_photo = client.photos.entries.first 
+
+File.open(first_photo.name, 'wb') do |file|
+  file.write client.file.download(first_photo, network_reads: true)
+end
+```
+
+### Uploading a file
+
+```ruby
+client = SpaceMonkey::Client.new
+client.account.login('email@example.com', 'password')
+
+photos = client.inode.home
+
+file = client.file.new(name: 'somefile.jpg')
+io = File.open('to_upload.jpg')
+
+uploaded = client.file.upload(file, inode, io)
+```
 
 ## Contributing
 

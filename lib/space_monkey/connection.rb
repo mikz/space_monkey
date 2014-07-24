@@ -10,7 +10,7 @@ module SpaceMonkey
   class Connection
 
     extend Forwardable
-    def_delegators :@connection, :post, :get
+    def_delegators :@connection, :post, :get, :put
 
     attr_accessor :options, :connection
 

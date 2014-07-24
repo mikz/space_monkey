@@ -4,6 +4,9 @@ module SpaceMonkey
   class Inode
     attr_reader :inode, :parent, :content_id
 
+    FILE = 'FILE'.freeze
+    DIR = 'DIR'.freeze
+
     ROOT = 'home'.freeze
     CONTENT_ID = 'content_id'.freeze
     INODE = 'inode'.freeze
@@ -19,9 +22,22 @@ module SpaceMonkey
     end
 
     def name_of(content_id)
-      puts @inode.inspect
       found = @inode.fetch('dir_ents').find{|ent| ent[CONTENT_ID] == content_id }
       found && found['name']
+    end
+
+    def entries
+      # TODO: mutex
+      @entries ||= @inode.fetch('dir_ents').map { |entry| build_entry(entry) }
+    end
+
+    def build_entry(entry)
+      klass = case type = entry.fetch('type')
+                when FILE then SpaceMonkey::File
+                when DIR then SpaceMonkey::Folder
+                else raise "Unknown type #{type}"
+              end
+      klass.new(entry)
     end
 
     class Path

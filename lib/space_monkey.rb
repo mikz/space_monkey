@@ -11,6 +11,7 @@ module SpaceMonkey
   autoload :Record, 'space_monkey/record'
   autoload :Connection, 'space_monkey/connection'
   autoload :CLI, 'space_monkey/cli'
+  autoload :ApiParams, 'space_monkey/api_params'
 
   def self.default_connection
     # TODO: add a mutex
