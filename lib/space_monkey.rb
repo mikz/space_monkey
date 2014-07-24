@@ -13,6 +13,10 @@ module SpaceMonkey
   autoload :CLI, 'space_monkey/cli'
   autoload :ApiParams, 'space_monkey/api_params'
 
+  autoload :BaseClient, 'space_monkey/base_client'
+  autoload :ShareClient, 'space_monkey/share_client'
+  autoload :Share, 'space_monkey/share'
+
   def self.default_connection
     # TODO: add a mutex
     @@default_connection ||= SpaceMonkey::Connection.new

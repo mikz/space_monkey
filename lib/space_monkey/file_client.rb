@@ -33,6 +33,11 @@ module SpaceMonkey
       file.merge!(response.body)
     end
 
+    def delete(file, inode = parent)
+      response = @connection.delete("inode/#{inode.content_id}:/#{URI.escape(file.name)}", content_id: file.content_id)
+      response.body
+    end
+
     private
 
     def params(options)
