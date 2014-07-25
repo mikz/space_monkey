@@ -1,3 +1,6 @@
+require 'coveralls'
+Coveralls.wear!
+
 require 'space_monkey'
 require 'webmock/rspec'
 
