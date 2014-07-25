@@ -1,4 +1,4 @@
-# SpaceMonkey [![Build Status](https://travis-ci.org/mikz/space_monkey.svg)](https://travis-ci.org/mikz/space_monkey)
+# SpaceMonkey [![Build Status](https://travis-ci.org/mikz/space_monkey.svg)](https://travis-ci.org/mikz/space_monkey) [![Coverage Status](https://img.shields.io/coveralls/mikz/space_monkey.svg)](https://coveralls.io/r/mikz/space_monkey)
 
 Ruby Client for Space Monkey API.
 
