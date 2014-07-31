@@ -4,6 +4,12 @@ Ruby Client for Space Monkey API.
 
 Experimental. Space Monkey API is not public yet and it can change any time.
 
+## What is Space Monkey?
+
+Space Monkey (https://www.spacemonkey.com/) is a 1TB Hard Drive with cloud backup.
+When your device is offline, you can access to the files distributed in cloud network.
+Their [Kickstarter page](https://www.kickstarter.com/projects/clintgc/space-monkey-taking-the-cloud-out-of-the-datacente) has great video explaining what they do.
+
 ## Installation
 
 Add this line to your application's Gemfile:
